@@ -3,8 +3,9 @@
 # $Id$
 # Copyright (c) 2008 Jason R. Coombs
 
-import pkg_resources
-pkg_resources.require('PIL>=1.1.6')
+"""
+This module requires PIL
+"""
 
 import operator
 
