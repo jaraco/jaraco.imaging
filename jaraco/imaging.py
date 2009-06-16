@@ -1,10 +1,11 @@
 #!python
+# -*- coding: utf-8 -*-
 
 # $Id$
-# Copyright (c) 2008 Jason R. Coombs
 
 """
 This module requires PIL
+Copyright © 2008 Jason R. Coombs
 """
 
 import operator
