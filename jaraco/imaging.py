@@ -54,4 +54,4 @@ def load_apng():
 	import Image
 	from io import BytesIO
 	apng = pkg_resources.resource_stream(__name__, 'sample.png')
-	return Image.open(BytesIO(apng))
+	return Image.open(BytesIO(apng.read()))
