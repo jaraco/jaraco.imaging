@@ -1,22 +1,22 @@
-#!python
 # -*- coding: utf-8 -*-
 
 """
 This module requires PIL
-Copyright © 2008,2010 Jason R. Coombs
+Copyright © 2008,2010,2011 Jason R. Coombs
 """
 
 from __future__ import division
 
 import operator
 from collections import namedtuple
+
 import pkg_resources
 
 def calc_aspect(size):
 	"aspect = size[0] / size[1] # width/height"
 	return reduce(operator.truediv, size)
 
-Dimensions = namedtuple('dimensions', 'width height')
+Dimensions = namedtuple('Dimensions', 'width height')
 
 def replace_height(size, new_height):
 	return Dimensions(size.width, new_height)
@@ -28,7 +28,7 @@ def resize_with_aspect(image, max_size, *args, **kargs):
 	"""
 	Resizes a PIL image to a maximum size specified while maintaining
 	the aspect ratio of the image.
-	
+
 	>>> img = load_apng()
 	>>> newimg = resize_with_aspect(img, Dimensions(10,15))
 	>>> newdim = Dimensions(*newimg.size)
