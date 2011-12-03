@@ -5,7 +5,7 @@ This module requires PIL
 Copyright © 2008,2010,2011 Jason R. Coombs
 """
 
-from __future__ import division
+from __future__ import division, unicode_literals
 
 import operator
 from collections import namedtuple
