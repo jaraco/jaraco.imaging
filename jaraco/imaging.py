@@ -42,11 +42,11 @@ def resize_with_aspect(image, max_size, *args, **kargs):
 
 	if aspect >= target_aspect:
 		# height is limiting factor
-		new_height = int(round(max_size.width/aspect))
+		new_height = int(round(max_size.width / aspect))
 		new_size = replace_height(max_size, new_height)
 	else:
 		# width is the limiting factor
-		new_width = int(round(max_size.height*aspect))
+		new_width = int(round(max_size.height * aspect))
 		new_size = replace_width(max_size, new_width)
 	return image.resize(new_size, *args, **kargs)
 
