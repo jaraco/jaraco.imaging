@@ -14,6 +14,11 @@ setup_params = dict(
 	setup_requires=[
 		'hgtools',
 	],
+	entry_points={
+		'console_scripts':[
+			'save-cb-image=jaraco.imaging:save_clipboard_image',
+		],
+	},
 )
 if __name__ == '__main__':
 	setuptools.setup(**setup_params)
