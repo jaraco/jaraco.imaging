@@ -1,20 +1,22 @@
 # -*- coding: utf-8 -*-
 
 """
-This module requires PIL
-Copyright © 2008,2010,2011 Jason R. Coombs
+Copyright © 2008,2010,2011,2013 Jason R. Coombs
 """
 
 from __future__ import division, unicode_literals
 
+import io
 import operator
 from collections import namedtuple
 
+import PIL
+import six
 import pkg_resources
 
 def calc_aspect(size):
 	"aspect = size[0] / size[1] # width/height"
-	return reduce(operator.truediv, size)
+	return six.moves.reduce(operator.truediv, size)
 
 Dimensions = namedtuple('Dimensions', 'width height')
 
@@ -51,7 +53,5 @@ def resize_with_aspect(image, max_size, *args, **kargs):
 	return image.resize(new_size, *args, **kargs)
 
 def load_apng():
-	import Image
-	from io import BytesIO
 	apng = pkg_resources.resource_stream(__name__, 'sample.png')
-	return Image.open(BytesIO(apng.read()))
+	return PIL.Image.open(io.BytesIO(apng.read()))
