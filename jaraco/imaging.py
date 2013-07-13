@@ -6,13 +6,16 @@ Copyright © 2008,2010,2011,2013 Jason R. Coombs
 
 from __future__ import division, unicode_literals
 
+import argparse
 import io
+import struct
 import operator
 from collections import namedtuple
 
 import PIL
 import six
 import pkg_resources
+import jaraco.windows.clipboard as wclip
 
 def calc_aspect(size):
 	"aspect = size[0] / size[1] # width/height"
@@ -55,3 +58,23 @@ def resize_with_aspect(image, max_size, *args, **kargs):
 def load_apng():
 	apng = pkg_resources.resource_stream(__name__, 'sample.png')
 	return PIL.Image.open(io.BytesIO(apng.read()))
+
+def get_image():
+	"""
+	Stolen from lpaste. TODO: extract to jaraco.clipboard or similar.
+	"""
+	with wclip.context():
+		result = wclip.GetClipboardData(wclip.CF_DIB)
+	# construct a header (see http://en.wikipedia.org/wiki/BMP_file_format)
+	offset = 54 # 14 byte BMP header + 40 byte DIB header
+	header = b'BM'+struct.pack('<LLL', len(result), 0, offset)
+	img_stream = io.BytesIO(header+result)
+	return PIL.Image.open(img_stream)
+
+def save_clipboard_image():
+	parser = argparse.ArgumentParser()
+	parser.add_argument('filename')
+	filename = parser.parse_args().filename
+	img = get_image()
+	with open(filename, 'wb') as target:
+		img.save(target, format='png')
