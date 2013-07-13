@@ -12,7 +12,7 @@ import struct
 import operator
 from collections import namedtuple
 
-import PIL
+import PIL.Image
 import six
 import pkg_resources
 import jaraco.windows.clipboard as wclip
