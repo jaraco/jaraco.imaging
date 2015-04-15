@@ -63,8 +63,7 @@ def get_image():
 	"""
 	Stolen from lpaste. TODO: extract to jaraco.clipboard or similar.
 	"""
-	with wclip.context():
-		result = wclip.GetClipboardData(wclip.CF_DIB)
+	result = wclip.get_image()
 	# construct a header (see http://en.wikipedia.org/wiki/BMP_file_format)
 	offset = 54 # 14 byte BMP header + 40 byte DIB header
 	header = b'BM'+struct.pack('<LLL', len(result), 0, offset)
