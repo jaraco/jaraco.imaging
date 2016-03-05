@@ -8,12 +8,13 @@ extensions = [
 ]
 
 # General information about the project.
-project = 'jaraco.imaging'
-copyright = '2015 Jason R. Coombs'
+project = 'skeleton'
+copyright = '2015-2016 Jason R. Coombs'
 
 # The short X.Y version.
-version = setuptools_scm.get_version()
+version = setuptools_scm.get_version(root='..', relative_to=__file__)
 # The full version, including alpha/beta/rc tags.
 release = version
 
 master_doc = 'index'
+
