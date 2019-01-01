@@ -15,7 +15,8 @@ from collections import namedtuple
 import PIL.Image
 import six
 import pkg_resources
-import jaraco.windows.clipboard as wclip
+import jaraco.clipboard
+
 
 def calc_aspect(size):
 	"aspect = size[0] / size[1] # width/height"
@@ -63,7 +64,7 @@ def get_image():
 	"""
 	Stolen from lpaste. TODO: extract to jaraco.clipboard or similar.
 	"""
-	result = wclip.get_image()
+	result = jaraco.clipboard.paste_image()
 	# construct a header (see http://en.wikipedia.org/wiki/BMP_file_format)
 	offset = 54 # 14 byte BMP header + 40 byte DIB header
 	header = b'BM'+struct.pack('<LLL', len(result), 0, offset)
