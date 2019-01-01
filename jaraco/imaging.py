@@ -22,13 +22,17 @@ def calc_aspect(size):
 	"aspect = size[0] / size[1] # width/height"
 	return six.moves.reduce(operator.truediv, size)
 
+
 Dimensions = namedtuple('Dimensions', 'width height')
+
 
 def replace_height(size, new_height):
 	return Dimensions(size.width, new_height)
 
+
 def replace_width(size, new_width):
 	return Dimensions(new_width, size.height)
+
 
 def resize_with_aspect(image, max_size, *args, **kargs):
 	"""
@@ -56,9 +60,11 @@ def resize_with_aspect(image, max_size, *args, **kargs):
 		new_size = replace_width(max_size, new_width)
 	return image.resize(new_size, *args, **kargs)
 
+
 def load_apng():
 	apng = pkg_resources.resource_stream(__name__, 'sample.png')
 	return PIL.Image.open(io.BytesIO(apng.read()))
+
 
 def get_image():
 	"""
@@ -66,10 +72,11 @@ def get_image():
 	"""
 	result = jaraco.clipboard.paste_image()
 	# construct a header (see http://en.wikipedia.org/wiki/BMP_file_format)
-	offset = 54 # 14 byte BMP header + 40 byte DIB header
-	header = b'BM'+struct.pack('<LLL', len(result), 0, offset)
-	img_stream = io.BytesIO(header+result)
+	offset = 54  # 14 byte BMP header + 40 byte DIB header
+	header = b'BM' + struct.pack('<LLL', len(result), 0, offset)
+	img_stream = io.BytesIO(header + result)
 	return PIL.Image.open(img_stream)
+
 
 def save_clipboard_image():
 	parser = argparse.ArgumentParser()
