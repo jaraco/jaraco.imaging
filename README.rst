@@ -1,13 +1,18 @@
 .. image:: https://img.shields.io/pypi/v/jaraco.imaging.svg
-   :target: https://pypi.org/project/jaraco.imaging
+   :target: `PyPI link`_
 
 .. image:: https://img.shields.io/pypi/pyversions/jaraco.imaging.svg
+   :target: `PyPI link`_
 
-.. image:: https://img.shields.io/travis/jaraco/jaraco.imaging/master.svg
-   :target: https://travis-ci.org/jaraco/jaraco.imaging
+.. _PyPI link: https://pypi.org/project/jaraco.imaging
 
-.. .. image:: https://img.shields.io/appveyor/ci/jaraco/jaraco-imaging/master.svg
-..    :target: https://ci.appveyor.com/project/jaraco/jaraco-imaging/branch/master
+.. image:: https://github.com/jaraco/jaraco.imaging/workflows/Automated%20Tests/badge.svg
+   :target: https://github.com/jaraco/jaraco.imaging/actions?query=workflow%3A%22Automated+Tests%22
+   :alt: Automated Tests
 
-.. .. image:: https://readthedocs.org/projects/jaracoimaging/badge/?version=latest
-..    :target: https://jaracoimaging.readthedocs.io/en/latest/?badge=latest
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :target: https://github.com/psf/black
+   :alt: Code style: Black
+
+.. .. image:: https://readthedocs.org/projects/skeleton/badge/?version=latest
+..    :target: https://skeleton.readthedocs.io/en/latest/?badge=latest
