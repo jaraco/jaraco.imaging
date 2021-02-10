@@ -10,8 +10,8 @@ import functools
 from collections import namedtuple
 
 import PIL.Image
-import pkg_resources
 import jaraco.clipboard
+from importlib_resources import files
 
 
 def calc_aspect(size):
@@ -58,8 +58,8 @@ def resize_with_aspect(image, max_size, *args, **kargs):
 
 
 def load_apng():
-    apng = pkg_resources.resource_stream(__name__, 'sample.png')
-    return PIL.Image.open(io.BytesIO(apng.read()))
+    apng = files('jaraco') / 'sample.png'
+    return PIL.Image.open(io.BytesIO(apng.read_bytes()))
 
 
 def get_image():
