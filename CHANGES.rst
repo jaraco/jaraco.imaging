@@ -1,3 +1,9 @@
+v2.1.0
+======
+
+Switch to PEP 420 for namespace package. Use importlib_resources
+for loading resources.
+
 v2.0.0
 ======
 
