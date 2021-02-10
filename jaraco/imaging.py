@@ -1,26 +1,22 @@
-# -*- coding: utf-8 -*-
-
 """
 Copyright © 2008,2010,2011,2013 Jason R. Coombs
 """
-
-from __future__ import division, unicode_literals
 
 import argparse
 import io
 import struct
 import operator
+import functools
 from collections import namedtuple
 
 import PIL.Image
-import six
 import pkg_resources
 import jaraco.clipboard
 
 
 def calc_aspect(size):
     "aspect = size[0] / size[1] # width/height"
-    return six.moves.reduce(operator.truediv, size)
+    return functools.reduce(operator.truediv, size)
 
 
 Dimensions = namedtuple('Dimensions', 'width height')
