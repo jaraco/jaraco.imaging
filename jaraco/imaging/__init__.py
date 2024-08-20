@@ -3,15 +3,16 @@ Copyright © 2008,2010,2011,2013 Jason R. Coombs
 """
 
 import argparse
-import io
-import struct
-import operator
 import functools
+import io
+import operator
+import struct
 from collections import namedtuple
 
 import PIL.Image
-import jaraco.clipboard
 from importlib_resources import files
+
+import jaraco.clipboard
 
 
 def calc_aspect(size):
@@ -58,7 +59,7 @@ def resize_with_aspect(image, max_size, *args, **kargs):
 
 
 def load_apng():
-    apng = files('jaraco') / 'sample.png'
+    apng = files() / 'sample.png'
     return PIL.Image.open(io.BytesIO(apng.read_bytes()))
 
 
