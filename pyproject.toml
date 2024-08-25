@@ -72,7 +72,3 @@ save-cb-image = "jaraco.imaging:save_clipboard_image"
 
 
 [tool.setuptools_scm]
-
-
-[tool.pytest-enabler.mypy]
-# Disabled due to jaraco/skeleton#143
