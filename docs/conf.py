@@ -54,3 +54,8 @@ extlinks = {
 extensions += ['sphinx.ext.extlinks']
 
 # local
+
+nitpick_ignore += [
+    # jaraco/jaraco.imaging#3
+    ('py:class', 'PIL.Image.Image'),
+]
