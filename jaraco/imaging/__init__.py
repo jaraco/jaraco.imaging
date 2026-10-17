@@ -41,6 +41,12 @@ def resize_with_aspect(image, max_size, *args, **kargs):
     >>> newdim = Dimensions(*newimg.size)
     >>> newdim.width <= 10 and newdim.height <= 15
     True
+
+    When the target is wider than the image, the height is limiting.
+
+    >>> newimg = resize_with_aspect(img, Dimensions(1000, 10))
+    >>> newimg.size[1]
+    10
     """
 
     max_size = Dimensions(*max_size)
