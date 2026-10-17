@@ -7,12 +7,11 @@ import functools
 import io
 import operator
 import struct
-from collections import namedtuple
-
-import PIL.Image
-from importlib_resources import files
+from typing import NamedTuple
 
 import jaraco.clipboard
+import PIL.Image
+from importlib_resources import files
 
 
 def calc_aspect(size):
@@ -20,7 +19,9 @@ def calc_aspect(size):
     return functools.reduce(operator.truediv, size)
 
 
-Dimensions = namedtuple('Dimensions', 'width height')
+class Dimensions(NamedTuple):
+    width: int
+    height: int
 
 
 def replace_height(size, new_height):
@@ -55,11 +56,11 @@ def resize_with_aspect(image, max_size, *args, **kargs):
 
     if aspect >= target_aspect:
         # height is limiting factor
-        new_height = int(round(max_size.width / aspect))
+        new_height = round(max_size.width / aspect)
         new_size = replace_height(max_size, new_height)
     else:
         # width is the limiting factor
-        new_width = int(round(max_size.height * aspect))
+        new_width = round(max_size.height * aspect)
         new_size = replace_width(max_size, new_width)
     return image.resize(new_size, *args, **kargs)
 
